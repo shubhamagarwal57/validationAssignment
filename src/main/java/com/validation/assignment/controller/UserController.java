@@ -1,5 +1,6 @@
 package com.validation.assignment.controller;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.validation.assignment.dto.RegisterUserDto;
 import com.validation.assignment.service.UserService;
 import io.swagger.annotations.Api;
@@ -26,7 +27,7 @@ public class UserController {
 
     @PostMapping("/register")
     @ApiOperation("Rest Api to register the user")
-    public ResponseEntity<RegisterUserDto> createUser(@Valid @RequestBody RegisterUserDto registerUserDto){
+    public ResponseEntity<RegisterUserDto> createUser(@Valid @RequestBody RegisterUserDto registerUserDto) throws JsonProcessingException {
         return new ResponseEntity<>(userService.registerUser(registerUserDto), HttpStatus.CREATED);
     }
 }

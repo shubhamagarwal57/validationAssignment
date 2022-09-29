@@ -1,8 +1,6 @@
 package com.validation.assignment.entity;
 
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import lombok.experimental.Accessors;
 
 import javax.persistence.*;
@@ -10,9 +8,12 @@ import javax.persistence.*;
 @Table
 @Entity
 @Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class Address {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @Column(nullable = false)
@@ -31,4 +32,5 @@ public class Address {
 
     @OneToOne(mappedBy = "address")
     private User user;
+
 }

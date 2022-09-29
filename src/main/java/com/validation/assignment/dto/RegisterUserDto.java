@@ -1,12 +1,19 @@
 package com.validation.assignment.dto;
 import com.validation.assignment.constraints.BirthDate;
 import io.swagger.annotations.ApiModel;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 import java.util.Date;
 
 @Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @ApiModel(value="Register user model properties")
 public class RegisterUserDto {
     @NotEmpty(message = "The full name is required.")
@@ -26,7 +33,7 @@ public class RegisterUserDto {
     private String gender;
 
     @NotNull(message = "Salary cannot be empty")
-    @Min(value=1000 ,message="salary must be >1000")
+    @Min(value=0 ,message="salary must be greater than zero")
     private int salary;
 
     @Valid

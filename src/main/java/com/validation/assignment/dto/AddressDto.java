@@ -1,12 +1,18 @@
 package com.validation.assignment.dto;
 import io.swagger.annotations.ApiModel;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 
 @Data
 @ApiModel(value="address model properties")
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class AddressDto {
     @NotBlank(message = "The country is required.")
     private String country;

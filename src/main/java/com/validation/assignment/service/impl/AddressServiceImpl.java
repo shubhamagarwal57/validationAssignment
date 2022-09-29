@@ -2,19 +2,21 @@ package com.validation.assignment.service.impl;
 
 import com.validation.assignment.dto.AddressDto;
 import com.validation.assignment.entity.Address;
-import com.validation.assignment.repository.AddressRepository;
 import com.validation.assignment.service.AddressService;
 import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-@Service
-public class AddressServiceImpl implements AddressService {
-    private ModelMapper mapper;
-    private AddressRepository addressRepository;
+import javax.transaction.Transactional;
 
-    public AddressServiceImpl(ModelMapper mapper, AddressRepository addressRepository) {
+@Service
+@Transactional
+public class AddressServiceImpl implements AddressService {
+    @Autowired
+    private ModelMapper mapper;
+
+    public AddressServiceImpl(ModelMapper mapper) {
         this.mapper = mapper;
-        this.addressRepository = addressRepository;
     }
 
     public AddressDto mapToDto(Address address){
